@@ -7,6 +7,8 @@ import (
 	tl "github.com/JoelOtter/termloop"
 )
 
+var events []string
+
 type Sprite struct {
 	*tl.Text
 }
@@ -47,11 +49,11 @@ func main() {
 	// Add Sprites
 	// To Create Even Spacing We Ensure range(x) / 2 = range(y)
 	// and double X's modulo for skip-spacing checks
-	mX := 256
+	mX := 64
 	mY := mX / 2
 	for x := 0; x < mX; x++ {
 		for y := 0; y < mY; y++ {
-			if x%4 == 0 && y%2 == 0 {
+			if x%4 == 0 && y%2 == 0 && x != 0 && y != 0 {
 				s := NewSprite(x, y, RandN())
 				lvl.AddEntity(s)
 			}
