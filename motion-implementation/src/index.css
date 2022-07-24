@@ -1,70 +1,91 @@
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer utilities {
+  @keyframes textflicker {
+    from {
+      filter: drop-shadow(2px 0 6px rgba(203, 232, 211, 0.8));
+      opacity: 100%;
+      transform: rotate(0.5deg);
+    }
+    20% {
+      filter: drop-shadow(1px 2px -5px rgba(203, 5, 211, 0.6));
+      opacity: 80%;
+      transform: translateY(1px);
+    }
+    40% {
+      filter: drop-shadow(5px 0 5px rgba(102, 252, 211, 0.8));
+      opacity: 100%;
+      transform: rotate(-0.75deg);
+    }
+    60% {
+      filter: drop-shadow(2px -4px 6px rgba(203, 252, 0, 0.55));
+      opacity: 90%;
+    }
+    to {
+      filter: drop-shadow(0 0 6px rgba(12, 232, 211, 0.9));
+    }
   }
-  a:hover {
-    color: #747bff;
+
+  .glow {
+    animation: textflicker 1.2s infinite alternate linear;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .glow:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .screen {
+    background-image: linear-gradient(135deg, #444cf7 25%, transparent 25%),
+      linear-gradient(225deg, #ffffff 25%, transparent 25%),
+      linear-gradient(45deg, rgba(102, 252, 211, 0.8) 25%, transparent 25%),
+      linear-gradient(315deg, #444cf7 25%, rgba(12, 232, 211, 0.9) 25%);
+    background-size: 2px 3px;
+    background-repeat: repeat;
+    opacity: 1
+  }
+}@layer utilities {
+  @keyframes textflicker {
+    from {
+      filter: drop-shadow(2px 0 6px rgba(203, 232, 211, 0.8));
+      opacity: 100%;
+      transform: rotate(0.5deg);
+    }
+    20% {
+      filter: drop-shadow(1px 2px -5px rgba(203, 5, 211, 0.6));
+      opacity: 80%;
+      transform: translateY(1px);
+    }
+    40% {
+      filter: drop-shadow(5px 0 5px rgba(102, 252, 211, 0.8));
+      opacity: 100%;
+      transform: rotate(-0.75deg);
+    }
+    60% {
+      filter: drop-shadow(2px -4px 6px rgba(203, 252, 0, 0.55));
+      opacity: 90%;
+    }
+    to {
+      filter: drop-shadow(0 0 6px rgba(12, 232, 211, 0.9));
+    }
+  }
+
+  .glow {
+    animation: textflicker 1.2s infinite alternate linear;
+  }
+
+  .glow:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .screen {
+    background-image: linear-gradient(135deg, #444cf7 25%, transparent 25%),
+      linear-gradient(225deg, #ffffff 25%, transparent 25%),
+      linear-gradient(45deg, rgba(102, 252, 211, 0.8) 25%, transparent 25%),
+      linear-gradient(315deg, #444cf7 25%, rgba(12, 232, 211, 0.9) 25%);
+    background-size: 2px 3px;
+    background-repeat: repeat;
+    opacity: 1
   }
 }
